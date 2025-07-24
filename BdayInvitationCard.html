@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baby Trishika's 2nd Birthday</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,57 +17,21 @@
             font-family: 'Comic Sans MS', cursive, sans-serif;
             background: linear-gradient(135deg, #8b5fbf 0%, #b19cd9 50%, #dda0dd 100%);
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
             overflow-x: hidden;
         }
 
         .invitation-container {
             perspective: 1200px;
-            position: relative;
+            padding: 15px;
         }
 
         .book-card {
-            width: 90vw;
-            max-width: 500px;
-            height: 80vh;
-            max-height: 700px;
             position: relative;
             transform-style: preserve-3d;
             transition: transform 1s ease-in-out;
             cursor: pointer;
+            min-height: 600px;
         }
-
-        /* Responsive adjustments for mobile */
-@media (max-width: 600px) {
-    .book-card {
-        width: 98vw;
-        height: 98vh;
-        min-width: 0;
-        min-height: 0;
-        padding: 10px 0;
-    }
-    .front-page, .back-page {
-        padding: 15px 5px;
-    }
-    .main-title, .princess-name {
-        font-size: 2rem;
-    }
-    .age-crown {
-        width: 70px;
-        height: 70px;
-        font-size: 2.5rem;
-    }
-    .baby-photo {
-        width: 90px;
-        height: 90px;
-    }
-    .invitation-details {
-        padding: 10px;
-    }
-}
 
         .book-card.flipped {
             transform: rotateY(180deg);
@@ -83,34 +49,28 @@
             border: 3px solid #9966cc;
             top: 0;
             left: 0;
+            min-height: 600px;
         }
 
         .front-page {
-            background: linear-gradient(145deg, #f8f5ff, #e6d9ff);
-            padding: 36px;
-            text-align: center;
+            background: 
+                linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), 
+                url('trishikaBG.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
             position: relative;
             overflow: hidden;
             transform: rotateY(0deg);
         }
 
         .back-page {
-            background: linear-gradient(145deg, #f0ebff, #ddd0ff);
+            background: 
+                linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), 
+                url('trishikaBG.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
             transform: rotateY(-180deg);
-            padding: 30px;
-            text-align: center;
         }
-
-        .front-page,
-.back-page {
-    background: 
-        linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), 
-        url('trishikaBG.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
 
         .magical-border {
             position: absolute;
@@ -159,23 +119,19 @@
         }
 
         .age-crown {
-            display: inline-block;
             background: linear-gradient(45deg, #9966cc, #6a5acd);
             color: white;
-            font-size: 4rem;
             font-weight: bold;
-            width: 100px;
-            height: 100px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
             animation: royal-glow 2s infinite alternate;
             box-shadow: 
                 0 0 30px rgba(153, 102, 204, 0.6),
                 0 10px 25px rgba(106, 90, 205, 0.4);
             position: relative;
+            margin: 0 auto 20px;
         }
 
         .age-crown::before {
@@ -184,6 +140,21 @@
             top: -15px;
             font-size: 2rem;
             animation: crown-bounce 2s infinite;
+        }
+
+        /* Responsive age crown sizes */
+        .age-crown {
+            width: 80px;
+            height: 80px;
+            font-size: 3rem;
+        }
+
+        @media (min-width: 576px) {
+            .age-crown {
+                width: 100px;
+                height: 100px;
+                font-size: 4rem;
+            }
         }
 
         @keyframes royal-glow {
@@ -197,12 +168,10 @@
         }
 
         .main-title {
-            font-size: 2.8rem;
             background: linear-gradient(45deg, #9966cc, #6a5acd, #8b5fbf);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 15px;
             font-weight: bold;
             text-shadow: 2px 2px 4px rgba(139, 95, 191, 0.3);
             animation: title-shimmer 3s infinite;
@@ -214,18 +183,14 @@
         }
 
         .subtitle {
-            font-size: 1.4rem;
             color: #8b5fbf;
-            margin-bottom: 25px;
             font-weight: bold;
             font-style: italic;
         }
 
         .princess-name {
-            font-size: 3rem;
             color: #6a5acd;
             font-weight: bold;
-            margin: 20px 0;
             text-shadow: 3px 3px 6px rgba(106, 90, 205, 0.4);
             position: relative;
         }
@@ -236,12 +201,16 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 2rem;
             animation: twinkle 2s infinite alternate;
         }
 
-        .princess-name::before { left: -40px; }
-        .princess-name::after { right: -40px; }
+        .princess-name::before { left: -30px; font-size: 1.5rem; }
+        .princess-name::after { right: -30px; font-size: 1.5rem; }
+
+        @media (min-width: 576px) {
+            .princess-name::before { left: -40px; font-size: 2rem; }
+            .princess-name::after { right: -40px; font-size: 2rem; }
+        }
 
         @keyframes twinkle {
             0% { opacity: 0.5; transform: translateY(-50%) scale(0.8); }
@@ -249,46 +218,11 @@
         }
 
         .turning-text {
-            font-size: 1.3rem;
             color: #9966cc;
-            margin-bottom: 30px;
             font-weight: bold;
-        }
-
-        .flip-instruction {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(153, 102, 204, 0.9);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: bold;
-            animation: pulse-glow 2s infinite;
-            cursor: pointer;
-        }
-
-        @keyframes pulse-glow {
-            0%, 100% { 
-                box-shadow: 0 0 20px rgba(153, 102, 204, 0.5);
-                transform: translateX(-50%) scale(1);
-            }
-            50% { 
-                box-shadow: 0 0 30px rgba(153, 102, 204, 0.8);
-                transform: translateX(-50%) scale(1.05);
-            }
-        }
-
-        /* Back page styles */
-        .baby-photo-section {
-            margin-bottom: 25px;
         }
 
         .baby-photo {
-            width: 150px;
-            height: 150px;
             border-radius: 50%;
             border: 5px solid #9966cc;
             margin: 0 auto 20px;
@@ -318,7 +252,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
             color: #9966cc;
             border-radius: 50%;
         }
@@ -335,8 +268,6 @@
         .invitation-details {
             background: rgba(255, 255, 255, 0.9);
             border-radius: 20px;
-            padding: 25px;
-            margin: 20px 0;
             border: 3px solid #dda0dd;
             box-shadow: 
                 inset 0 2px 15px rgba(139, 95, 191, 0.2),
@@ -366,14 +297,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 15px 0;
-            font-size: 1.1rem;
             color: #6a5acd;
             font-weight: bold;
         }
 
         .detail-icon {
-            font-size: 1.8rem;
             margin-right: 12px;
             animation: icon-dance 3s infinite ease-in-out;
         }
@@ -387,19 +315,9 @@
         .rsvp-section {
             background: linear-gradient(45deg, #9966cc, #b19cd9);
             border-radius: 15px;
-            padding: 20px;
-            margin-top: 20px;
             color: white;
             font-weight: bold;
             box-shadow: 0 10px 25px rgba(153, 102, 204, 0.4);
-        }
-
-        .bottom-message {
-            margin-top: 20px;
-            font-size: 1.1rem;
-            color: #8b5fbf;
-            font-style: italic;
-            font-weight: bold;
         }
 
         .magical-heart {
@@ -407,7 +325,6 @@
             color: #9966cc;
             animation: heartbeat 1.5s ease-in-out infinite;
             margin: 0 8px;
-            font-size: 1.3rem;
         }
 
         @keyframes heartbeat {
@@ -470,117 +387,143 @@
                 opacity: 1;
             }
         }
+
+        /* Custom responsive utilities */
+        @media (max-width: 575.98px) {
+            .sparkle, .butterfly {
+                font-size: 1.2rem;
+            }
+            .princess-name::before,
+            .princess-name::after {
+                display: none; /* Hide decorative elements on very small screens */
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="invitation-container">
-        <div class="book-card" id="bookCard">
-            <!-- Front Page -->
-            <div class="page front-page">
-                <div class="magical-border"></div>
-                <div class="sparkle-overlay">
-                    <div class="sparkle">✨</div>
-                    <div class="sparkle">⭐</div>
-                    <div class="sparkle">✨</div>
-                    <div class="sparkle">⭐</div>
-                    <div class="sparkle">✨</div>
-                    <div class="sparkle">⭐</div>
-                </div>
-                
-                <div class="floating-butterflies">
-                    <div class="butterfly">🦋</div>
-                    <div class="butterfly">🦋</div>
-                    <div class="butterfly">🦋</div>
-                </div>
+    <div class="container-fluid">
+        <div class="row justify-content-center align-items-center min-vh-100">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+                <div class="invitation-container">
+                    <div class="book-card" id="bookCard">
+                        <!-- Front Page -->
+                        <div class="page front-page">
+                            <div class="magical-border"></div>
+                            <div class="sparkle-overlay">
+                                <div class="sparkle">✨</div>
+                                <div class="sparkle">⭐</div>
+                                <div class="sparkle">✨</div>
+                                <div class="sparkle">⭐</div>
+                                <div class="sparkle">✨</div>
+                                <div class="sparkle">⭐</div>
+                            </div>
+                            
+                            <div class="floating-butterflies">
+                                <div class="butterfly">🦋</div>
+                                <div class="butterfly">🦋</div>
+                                <div class="butterfly">🦋</div>
+                            </div>
 
-                <div class="age-crown">2</div>
-                
-                <h1 class="main-title">You're Invited!</h1>
-                <p class="subtitle">Celebrate This Special Day With Us!</p>
-                
-                <div class="princess-name">Baby Trishika</div>
-                <div class="turning-text">is turning <strong>TWO!</strong> 🎂✨</div>
-                
-                <div style="margin-top: 80px;">
-                <button onclick="showVenuePopup()" style="padding: 10px 20px; border-radius: 10px; background: #9966cc; color: white; border: none; font-weight: bold; cursor: pointer;">
-                🎉 Click here for Venue Details
-                </button>
+                            <div class="d-flex flex-column align-items-center justify-content-center h-100 p-3 p-sm-4">
+                                <div class="age-crown">2</div>
+                                
+                                <h1 class="main-title text-center mb-3 fs-1 fs-sm-1">You're Invited!</h1>
+                                <p class="subtitle text-center mb-4 fs-5 fs-sm-4">Celebrate This Special Day With Us!</p>
+                                
+                                <div class="princess-name text-center mb-3 fs-1 fs-sm-1">Baby Trishika</div>
+                                <div class="turning-text text-center mb-4 fs-5 fs-sm-4">is turning <strong>TWO!</strong> 🎂✨</div>
+                                
+                                <div class="mt-4 mt-sm-5">
+                                    <button 
+                                        onclick="showVenuePopup()" 
+                                        class="btn btn-lg px-4 py-2"
+                                        style="border-radius: 25px; background: #9966cc; color: white; border: none; font-weight: bold;">
+                                        🎉 Click here for Venue Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Back Page -->
+                        <div class="page back-page">
+                            <div class="magical-border"></div>
+                            
+                            <div class="d-flex flex-column align-items-center justify-content-center h-100 p-3 p-sm-4">
+                                <div class="baby-photo-section text-center mb-4">
+                                    <div class="baby-photo mx-auto" style="width: 120px; height: 120px;">
+                                        <img src="trishika.jpg" alt="Princess Trishika" class="w-100 h-100"> 
+                                        <!-- <div class="photo-placeholder fs-1">👶</div> -->
+                                    </div>
+                                    <div class="fs-5 text-center mt-3" style="color: #9966cc; font-weight: bold;">
+                                        Our Little Princess! 👑
+                                    </div>
+                                </div>
+
+                                <div class="invitation-details p-3 p-sm-4 mb-3 w-100">
+                                    <div class="detail-item mb-3 fs-6 fs-sm-5">
+                                        <span class="detail-icon fs-4">📅</span>
+                                        <span>Sunday, November 16th, 2025</span>
+                                    </div>
+                                    <div class="detail-item mb-3 fs-6 fs-sm-5">
+                                        <span class="detail-icon fs-4">🕖</span>
+                                        <span>7:00 PM - 9:00 PM</span>
+                                    </div>
+                                    <div class="detail-item mb-3 fs-6 fs-sm-5 flex-column flex-sm-row">
+                                        <div class="d-flex align-items-center mb-2 mb-sm-0">
+                                            <span class="detail-icon fs-4">🏰</span>
+                                            <span class="text-center text-sm-start">Flat 702, Vision Indratej<br>Thathawade, Pune</span>
+                                        </div>
+                                    </div>
+                                    <div class="detail-item fs-6 fs-sm-5">
+                                        <span class="detail-icon fs-4">📍</span>                       
+                                        <span>Google Maps: <a href="https://www.google.com/maps" target="_blank">Click here</a></span>                       
+                                    </div>
+                                </div>
+
+                                <div class="rsvp-section p-3 p-sm-4 w-100 text-center">
+                                    <div class="fs-5 fs-sm-4 mb-2">✨ RSVP by November 16th ✨</div>
+                                    <div class="fs-6 fs-sm-5">📞 Call: 123-4567</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-            </div>
-
-            <!-- Back Page -->
-            <div class="page back-page">
-                <div class="magical-border"></div>
-                
-                <div class="baby-photo-section">
-                    <div class="baby-photo">
-                        <!-- Replace src with actual baby photo -->
-                         <img src="trishika.jpg" alt="Princess Trishika"> 
-                        <!-- <div class="photo-placeholder">👶</div> -->
-                    </div>
-                    <div style="font-size: 1.3rem; color: #9966cc; font-weight: bold; margin-bottom: 20px;">
-                        Our Little Princess! 👑
-                    </div>
-                </div>
-
-                <div class="invitation-details">
-                    <div class="detail-item">
-                        <span class="detail-icon">📅</span>
-                        <span>Sunday, November 16th, 2025</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon">🕖</span>
-                        <span>7:00 PM - 9:00 PM</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon">🏰</span>
-                        <span>Flat 702, Vision Indratej<br>Thathawade, Pune</span>                                           
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon">📍</span>                       
-                        <span> Google Maps: <a href="https://www.google.com/maps" target="_blank">Click here</a> </span>                       
-                    </div>
-                </div>
-
-                <div class="rsvp-section">
-                    <div style="font-size: 1.2rem; margin-bottom: 8px;">✨ RSVP by November 16th ✨</div>
-                    <div style="font-size: 1rem;">📞 Call: 123-4567</div>
-                </div>
-
-               
             </div>
         </div>
     </div>
 
     <!-- Venue Popup -->
-<div id="venuePopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 9999; justify-content: center; align-items: center;">
-    <div style="background: #fff; padding: 30px; border-radius: 20px; width: 80%; max-width: 500px; position: relative; box-shadow: 0 10px 25px rgba(153, 102, 204, 0.4);">
-        <span onclick="hideVenuePopup()" style="position: absolute; top: 10px; right: 15px; font-size: 1.5rem; cursor: pointer; color: #9966cc;">&times;</span>
-        <h2 style="color: #6a5acd; margin-bottom: 15px;">🎈 Venue Details</h2>
-        <p style="font-size: 1.1rem; color: #444;">
-            🏰 <strong>Flat 702, Vision Indratej</strong><br>
-            Thathawade, Pune<br><br>
-            🎯 Landmarks: Near ABC Chowk, beside XYZ Mall<br>
-            📍 Google Maps: <a href="https://www.google.com/maps" target="_blank">Click here</a>
-        </p>
+    <div id="venuePopup" class="position-fixed top-0 start-0 w-100 h-100 d-none justify-content-center align-items-center" style="background: rgba(0,0,0,0.6); z-index: 9999;">
+        <div class="bg-white p-4 rounded-3 position-relative mx-3" style="max-width: 500px; box-shadow: 0 10px 25px rgba(153, 102, 204, 0.4);">
+            <span onclick="hideVenuePopup()" class="position-absolute top-0 end-0 p-2 fs-3 text-decoration-none" style="cursor: pointer; color: #9966cc;">&times;</span>
+            <h2 class="mb-3" style="color: #6a5acd;">🎈 Venue Details</h2>
+            <p class="fs-6" style="color: #444;">
+                🏰 <strong>Flat 702, Vision Indratej</strong><br>
+                Thathawade, Pune<br><br>
+                🎯 Landmarks: Near ABC Chowk, beside XYZ Mall<br>
+                📍 Google Maps: <a href="https://www.google.com/maps" target="_blank">Click here</a>
+            </p>
+        </div>
     </div>
-</div>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
-            function showVenuePopup() {
-        document.getElementById('venuePopup').style.display = 'flex';
-    }
-
-    function hideVenuePopup() {
-        document.getElementById('venuePopup').style.display = 'none';
-    }
-
-    document.getElementById('venuePopup').addEventListener('click', function(e) {
-        if (e.target === this) {
-            hideVenuePopup();
+        function showVenuePopup() {
+            document.getElementById('venuePopup').classList.remove('d-none');
+            document.getElementById('venuePopup').classList.add('d-flex');
         }
-    });
+
+        function hideVenuePopup() {
+            document.getElementById('venuePopup').classList.add('d-none');
+            document.getElementById('venuePopup').classList.remove('d-flex');
+        }
+
+        document.getElementById('venuePopup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                hideVenuePopup();
+            }
+        });
 
         let isFlipped = false;
         
@@ -595,16 +538,10 @@
             }
         }
 
-        // Add click event to both the flip instruction button AND the entire card
-        const flipButton = document.querySelector('.flip-instruction');
-        
         // Add click event to the entire card for easier interaction
         document.getElementById('bookCard').addEventListener('click', flipCard);
 
         // Add some magical particle effects on hover
-        const frontPage = document.querySelector('.front-page');
-        const backPage = document.querySelector('.back-page');
-        
         function createMagicalParticle(x, y) {
             const particle = document.createElement('div');
             particle.innerHTML = ['✨', '⭐', '💜', '🦋'][Math.floor(Math.random() * 4)];

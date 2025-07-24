@@ -27,7 +27,7 @@
             position: relative;
         }
 
-         .book-card {
+        .book-card {
             width: 90vw;
             max-width: 500px;
             height: 80vh;
@@ -39,33 +39,33 @@
         }
 
         /* Responsive adjustments for mobile */
-        @media (max-width: 600px) {
-            .book-card {
-                width: 98vw;
-                height: 98vh;
-                min-width: 0;
-                min-height: 0;
-                padding: 10px 0;
-            }
-            .front-page, .back-page {
-                padding: 15px 5px;
-            }
-            .main-title, .princess-name {
-                font-size: 2rem;
-            }
-            .age-crown {
-                width: 70px;
-                height: 70px;
-                font-size: 2.5rem;
-            }
-            .baby-photo {
-                width: 90px;
-                height: 90px;
-            }
-            .invitation-details {
-                padding: 10px;
-            }
-        }
+@media (max-width: 600px) {
+    .book-card {
+        width: 98vw;
+        height: 98vh;
+        min-width: 0;
+        min-height: 0;
+        padding: 10px 0;
+    }
+    .front-page, .back-page {
+        padding: 15px 5px;
+    }
+    .main-title, .princess-name {
+        font-size: 2rem;
+    }
+    .age-crown {
+        width: 70px;
+        height: 70px;
+        font-size: 2.5rem;
+    }
+    .baby-photo {
+        width: 90px;
+        height: 90px;
+    }
+    .invitation-details {
+        padding: 10px;
+    }
+}
 
         .book-card.flipped {
             transform: rotateY(180deg);
@@ -100,6 +100,17 @@
             padding: 30px;
             text-align: center;
         }
+
+        .front-page,
+.back-page {
+    background: 
+        linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), 
+        url('trishikaBG.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 
         .magical-border {
             position: absolute;
@@ -487,10 +498,10 @@
                 <h1 class="main-title">You're Invited!</h1>
                 <p class="subtitle">Celebrate This Special Day With Us!</p>
                 
-                <div class="princess-name">Princess Trishika</div>
+                <div class="princess-name">Baby Trishika</div>
                 <div class="turning-text">is turning <strong>TWO!</strong> 🎂✨</div>
                 
-                <div style="margin-top: 100px;">
+                <div style="margin-top: 80px;">
                 <button onclick="showVenuePopup()" style="padding: 10px 20px; border-radius: 10px; background: #9966cc; color: white; border: none; font-weight: bold; cursor: pointer;">
                 🎉 Click here for Venue Details
                 </button>
@@ -537,13 +548,7 @@
                     <div style="font-size: 1rem;">📞 Call: 123-4567</div>
                 </div>
 
-                <div class="bottom-message">
-                    Let's make her 2nd birthday absolutely magical!
-                    <span class="magical-heart">💜</span>
-                    <div style="margin-top: 10px; font-size: 0.9rem;">
-                        Click again to flip back! 🔄
-                    </div>
-                </div>
+               
             </div>
         </div>
     </div>

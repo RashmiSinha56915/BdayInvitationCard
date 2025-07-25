@@ -270,6 +270,20 @@
             }
         }
 
+        /* Countdown Timer Styles */
+        .countdown-container {
+            background: linear-gradient(45deg, rgba(153, 102, 204, 0.9), rgba(177, 156, 217, 0.9));
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 3px solid #9966cc;
+            box-shadow: 
+                0 15px 35px rgba(153, 102, 204, 0.4),
+                inset 0 2px 10px rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
         .countdown-container::before {
             content: '';
             position: absolute;
@@ -355,7 +369,11 @@
             text-align: center;
             animation: celebration 2s infinite;
         }
-        
+
+        @keyframes celebration {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
 
         .invitation-details {
             background: rgba(255, 255, 255, 0.9);
@@ -405,7 +423,7 @@
         }
 
         .rsvp-section {
-           background: linear-gradient(45deg, #553a70, #b19cd9);
+            background: linear-gradient(45deg, #553a70, #b19cd9);
             border-radius: 15px;
             color: white;
             font-weight: bold;
@@ -489,6 +507,13 @@
             .princess-name::after {
                 display: none; /* Hide decorative elements on very small screens */
             }
+            .countdown-number {
+                font-size: 1.5rem;
+            }
+            .countdown-item {
+                min-width: 60px;
+                padding: 10px 8px;
+            }
         }
     </style>
 </head>
@@ -500,6 +525,7 @@
                 <div class="invitation-container">
                     <div class="book-card" id="bookCard">
                         <!-- Front Page -->
+                         
                         <div class="page front-page">
                             <div class="magical-border"></div>
                             <div class="sparkle-overlay">
@@ -526,7 +552,7 @@
                                 <div class="princess-name text-center mb-3 fs-1 fs-sm-1">Baby Trishika</div>
                                 <div class="turning-text text-center mb-4 fs-5 fs-sm-4">is turning <strong>TWO!</strong> 🎂✨</div>
                                 
-                                   <!-- Countdown Timer -->
+                                <!-- Countdown Timer -->
                                 <div class="countdown-container w-60">
                                     <div class="countdown-title text-center fs-5">🎉 Countdown to the Big Day! 🎉</div>
                                     <div class="countdown-timer" id="countdown">
@@ -534,7 +560,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="mt-4 mt-sm-5">
+                                <div class="mt-3">
                                     <button 
                                         onclick="showVenuePopup()" 
                                         class="btn btn-lg px-4 py-2"
@@ -572,7 +598,7 @@
                                     <div class="detail-item mb-3 fs-6 fs-sm-5 flex-column flex-sm-row">
                                         <div class="d-flex align-items-center mb-2 mb-sm-0">
                                             <span class="detail-icon fs-4">🏰</span>
-                                            <span class="text-center text-sm-start">Flat 702, Vision Indratej<br>Tathawade, Pune</span>
+                                            <span class="text-center text-sm-start">Flat 702, Vision Indratej<br>Thathawade, Pune</span>
                                         </div>
                                     </div>
                                     <div class="detail-item fs-6 fs-sm-5">
@@ -583,7 +609,7 @@
 
                                 <div class="rsvp-section p-3 p-sm-4 w-100 text-center">
                                     <div class="fs-5 fs-sm-4 mb-2">✨ RSVP by November 16th ✨</div>
-                                    <div class="fs-6 fs-sm-5">📞 Call: 9430021223</div>
+                                     <div class="fs-6 fs-sm-5">📞 Call: 9430021223</div>
                                 </div>
                             </div>
                         </div>
@@ -599,10 +625,8 @@
             <span onclick="hideVenuePopup()" class="position-absolute top-0 end-0 p-2 fs-3 text-decoration-none" style="cursor: pointer; color: #9966cc;">&times;</span>
             <h2 class="mb-3" style="color: #6a5acd;">🎈 Venue Details</h2>
             <p class="fs-6" style="color: #444;">
-                🏰 <strong>Flat 702, Vision Indratej</strong><br>
-                Thathawade, Pune<br><br>
-                🎯 Landmarks: Near ABC Chowk, beside XYZ Mall<br>
-                📍 Google Maps: <a href="https://www.google.com/maps" target="_blank">Click here</a>
+            <span class="text-center text-sm-start">Flat 702, Vision Indratej<br>Ashok Nagar, Tathawade, Pune</span>
+            <span>Google Maps: <a href="https://maps.app.goo.gl/e3wmgtNGbmBbBLRh8" target="_blank">Click here</a></span>       
             </p>
         </div>
     </div>
@@ -639,8 +663,53 @@
     "retina_detect": true
     });
 </script>
-</script>
     <script>
+        // Countdown Timer Function
+        function updateCountdown() {
+            const targetDate = new Date('November 16, 2025 19:00:00').getTime();
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            const countdownElement = document.getElementById('countdown');
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                countdownElement.innerHTML = `
+                    <div class="countdown-item">
+                        <div class="countdown-number">${days}</div>
+                        <div class="countdown-label">Days</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number">${hours}</div>
+                        <div class="countdown-label">Hours</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number">${minutes}</div>
+                        <div class="countdown-label">Minutes</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number">${seconds}</div>
+                        <div class="countdown-label">Seconds</div>
+                    </div>
+                `;
+            } else {
+                countdownElement.innerHTML = `
+                    <div class="countdown-expired">
+                        🎉 It's Party Time! 🎉<br>
+                        Happy 2nd Birthday, Trishika! 🎂✨
+                    </div>
+                `;
+            }
+        }
+
+        // Update countdown every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
         function showVenuePopup() {
             document.getElementById('venuePopup').classList.remove('d-none');
             document.getElementById('venuePopup').classList.add('d-flex');
